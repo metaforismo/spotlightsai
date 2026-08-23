@@ -1,7 +1,7 @@
 # End-to-End Integration Tests
 #
 # Verifies every deployment mode works end-to-end.
-# Walks through the `elmo init --dev` CLI flow in CI mode, then runs in five
+# Walks through the `spotlight init --dev` CLI flow in CI mode, then runs in five
 # phases against the Dockerized stack:
 #
 #   1. local — worker down, seed data, run the `local` Playwright project
@@ -53,7 +53,7 @@ jobs:
       # can silently run against a different effective config. The override
       # scopes the worker to the no-network stub provider. The mode phases
       # append their own override on top of this.
-      COMPOSE_FILE: e2e/.elmo/elmo.yaml:e2e/worker-override.yaml
+      COMPOSE_FILE: e2e/.spotlight/spotlight.yaml:e2e/worker-override.yaml
 
     steps:
       - name: Checkout
@@ -93,18 +93,18 @@ jobs:
           max_attempts: 3
           command: pnpm -C apps/web exec playwright install chromium --with-deps
 
-      - name: Build elmo CLI
+      - name: Build spotlight CLI
         run: pnpm -C apps/cli build
 
-      - name: "Run: elmo init --dev (via cli-driver)"
+      - name: "Run: spotlight init --dev (via cli-driver)"
         run: |
-          mkdir -p e2e/.elmo
+          mkdir -p e2e/.spotlight
           cd e2e
-          npx tsx cli-driver.ts "$PWD/.elmo" "$GITHUB_WORKSPACE"
+          npx tsx cli-driver.ts "$PWD/.spotlight" "$GITHUB_WORKSPACE"
 
       - name: Patch .env with test overrides
         run: |
-          cat >> e2e/.elmo/.env <<'PATCH'
+          cat >> e2e/.spotlight/.env <<'PATCH'
 
           # E2E test overrides
           ADMIN_API_KEYS=test-api-key-e2e
@@ -115,10 +115,10 @@ jobs:
       - name: Show generated config
         run: |
           echo "=== .env ==="
-          cat e2e/.elmo/.env
+          cat e2e/.spotlight/.env
           echo ""
-          echo "=== elmo.yaml (services) ==="
-          grep -E '^\s{2}\w' e2e/.elmo/elmo.yaml || true
+          echo "=== spotlight.yaml (services) ==="
+          grep -E '^\s{2}\w' e2e/.spotlight/spotlight.yaml || true
 
       # Build all images so a broken worker (or db-migrate) Dockerfile fails CI
       # here. web/worker/migrate share the base/deps/builder stages, so BuildKit
@@ -173,7 +173,7 @@ jobs:
 
       - name: Switch web to cloud mode
         env:
-          COMPOSE_FILE: e2e/.elmo/elmo.yaml:e2e/worker-override.yaml:e2e/modes/cloud.yaml
+          COMPOSE_FILE: e2e/.spotlight/spotlight.yaml:e2e/worker-override.yaml:e2e/modes/cloud.yaml
         run: |
           docker compose up -d --no-build --no-deps --force-recreate web
           bash e2e/wait-for-web.sh
@@ -188,7 +188,7 @@ jobs:
 
       - name: Switch web to whitelabel mode
         env:
-          COMPOSE_FILE: e2e/.elmo/elmo.yaml:e2e/worker-override.yaml:e2e/modes/whitelabel.yaml
+          COMPOSE_FILE: e2e/.spotlight/spotlight.yaml:e2e/worker-override.yaml:e2e/modes/whitelabel.yaml
         run: |
           docker compose up -d --no-build --no-deps --force-recreate web
           bash e2e/wait-for-web.sh
@@ -206,7 +206,7 @@ jobs:
       # database. It writes nothing, so it goes last.
       - name: Switch web to demo mode
         env:
-          COMPOSE_FILE: e2e/.elmo/elmo.yaml:e2e/worker-override.yaml:e2e/modes/demo.yaml
+          COMPOSE_FILE: e2e/.spotlight/spotlight.yaml:e2e/worker-override.yaml:e2e/modes/demo.yaml
         run: |
           docker compose up -d --no-build --no-deps --force-recreate web
           bash e2e/wait-for-web.sh
@@ -260,19 +260,19 @@ jobs:
       postgres:
         image: postgres:16-alpine
         env:
-          POSTGRES_USER: elmo
-          POSTGRES_PASSWORD: elmo
-          POSTGRES_DB: elmo
+          POSTGRES_USER: spotlight
+          POSTGRES_PASSWORD: spotlight
+          POSTGRES_DB: spotlight
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U elmo"
+          --health-cmd "pg_isready -U spotlight"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
 
     env:
-      DATABASE_URL: postgres://elmo:elmo@localhost:5432/elmo
+      DATABASE_URL: postgres://spotlight:spotlight@localhost:5432/spotlight
       BETTER_AUTH_SECRET: scheduling-policy-ci-secret-0123456789
       APP_URL: http://localhost:3000
       DISABLE_TELEMETRY: 1
@@ -304,7 +304,7 @@ jobs:
           DEPLOYMENT_MODE: local
           SCRAPE_TARGETS: stub:stub
         run: |
-          ELMO_ENCRYPTION_KEY="$(openssl rand -base64 32)" \
+          SPOTLIGHT_ENCRYPTION_KEY="$(openssl rand -base64 32)" \
             nohup pnpm -C apps/worker exec tsx src/index.ts > /tmp/worker-local.log 2>&1 &
           echo $! > /tmp/worker.pid
           sleep 15
@@ -318,7 +318,7 @@ jobs:
           STRIPE_SECRET_KEY: sk_test_ci
           STRIPE_WEBHOOK_SECRET: whsec_ci
           RESEND_API_KEY: re_ci
-          RESEND_FROM_EMAIL: Elmo <ci@example.com>
+          RESEND_FROM_EMAIL: SpotlightSAI <ci@example.com>
           GOOGLE_CLIENT_ID: ci
           GOOGLE_CLIENT_SECRET: ci
         run: |

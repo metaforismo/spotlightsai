@@ -5,7 +5,7 @@ export * from "./planner.js";
 export * from "./types.js";
 
 // Register migrations here when a release needs to change config/env on disk.
-// Most releases need NO entry — docker images roll automatically on `elmo upgrade`.
+// Most releases need NO entry — docker images roll automatically on `spotlight upgrade`.
 //
 // Each entry runs once when a user upgrades through its `from` version. Keep the
 // `run` function pure over the passed-in context so it stays unit-testable.
@@ -31,16 +31,16 @@ export const MIGRATIONS: readonly Migration[] = [
 		// `from` entry when the deployment's version is at or below it.
 		from: "0.2.17",
 		to: "0.2.18",
-		description: "add ELMO_ENCRYPTION_KEY for encrypted in-app provider credentials",
+		description: "add SPOTLIGHT_ENCRYPTION_KEY for encrypted in-app provider credentials",
 		async run(ctx) {
 			const env = await ctx.readEnv();
-			if (env.ELMO_ENCRYPTION_KEY !== undefined) return;
+			if (env.SPOTLIGHT_ENCRYPTION_KEY !== undefined) return;
 			// Standard base64 (not base64url): decoded with Buffer.from(key,
 			// "base64") to exactly 32 bytes. Absent key = storage UI disabled and
 			// env-provided credentials keep working, so this is purely additive.
-			env.ELMO_ENCRYPTION_KEY = randomBytes(32).toString("base64");
+			env.SPOTLIGHT_ENCRYPTION_KEY = randomBytes(32).toString("base64");
 			await ctx.writeEnv(env);
-			ctx.log.info("Added ELMO_ENCRYPTION_KEY — lets you store provider credentials encrypted in the app.");
+			ctx.log.info("Added SPOTLIGHT_ENCRYPTION_KEY — lets you store provider credentials encrypted in the app.");
 		},
 	},
 ];

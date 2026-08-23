@@ -16,7 +16,7 @@ export function NavAppInfo() {
 	return (
 		<div className="mx-2 mt-1 flex items-center gap-2 border-t border-sidebar-border/60 px-1 pt-2">
 			<a
-				href={`https://github.com/elmohq/elmo/releases/tag/v${__APP_VERSION__}`}
+				href={`https://github.com/metaforismo/spotlightsai/releases/tag/v${__APP_VERSION__}`}
 				target="_blank"
 				rel="noreferrer"
 				className="flex-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -26,15 +26,15 @@ export function NavAppInfo() {
 			<div className="flex items-center gap-1">
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<a href="https://www.elmohq.com/" target="_blank" className={linkClass}>
+						<a href="https://github.com/metaforismo/spotlightsai" target="_blank" className={linkClass}>
 							<IconWorld className="size-4" />
 						</a>
 					</TooltipTrigger>
-					<TooltipContent>elmohq.com</TooltipContent>
+					<TooltipContent>github.com/metaforismo/spotlightsai</TooltipContent>
 				</Tooltip>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<a href="https://github.com/elmohq/elmo" target="_blank" rel="noreferrer" className={linkClass}>
+						<a href="https://github.com/metaforismo/spotlightsai" target="_blank" rel="noreferrer" className={linkClass}>
 							<IconBrandGithub className="size-4" />
 						</a>
 					</TooltipTrigger>

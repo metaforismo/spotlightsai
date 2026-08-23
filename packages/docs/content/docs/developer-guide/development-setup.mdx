@@ -1,6 +1,6 @@
 ---
 title: Development Setup
-description: Set up a local development environment for contributing to Elmo.
+description: Set up a local development environment for contributing to SpotlightSAI.
 ---
 
 ## Prerequisites
@@ -13,8 +13,8 @@ description: Set up a local development environment for contributing to Elmo.
 ## Clone and Install
 
 ```bash
-git clone https://github.com/elmohq/elmo.git
-cd elmo
+git clone https://github.com/metaforismo/spotlightsai.git
+cd spotlight
 pnpm install
 ```
 
@@ -74,18 +74,18 @@ For a setup closer to production, use the CLI in dev mode:
 
 ```bash
 # Build from local source instead of pulling images
-elmo init --dev
+spotlight init --dev
 
 # Rebuild after code changes
-elmo compose build
-elmo compose up -d
+spotlight compose build
+spotlight compose up -d
 ```
 
 The Docker build uses a multi-stage `docker/Dockerfile` with separate targets for `web` and `worker`.
 
 ## Component Stories
 
-Elmo uses Ladle for component development in isolation:
+SpotlightSAI uses Ladle for component development in isolation:
 
 ```bash
 pnpm --filter @workspace/web ladle

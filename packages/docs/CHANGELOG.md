@@ -53,14 +53,14 @@
 
 ### Patch Changes
 
-- 4ccba7a: Remove `elmo status` — use `elmo compose ps` instead.
+- 4ccba7a: Remove `spotlight status` — use `spotlight compose ps` instead.
   - @workspace/ui@0.2.11
 
 ## 0.2.10
 
 ### Patch Changes
 
-- 063e33e: Remove `elmo start`, `elmo stop`, `elmo logs`, and `elmo build` aliases — use `elmo compose <args>` directly (e.g. `elmo compose up -d`, `elmo compose down`, `elmo compose logs -f`, `elmo compose build`).
+- 063e33e: Remove `spotlight start`, `spotlight stop`, `spotlight logs`, and `spotlight build` aliases — use `spotlight compose <args>` directly (e.g. `spotlight compose up -d`, `spotlight compose down`, `spotlight compose logs -f`, `spotlight compose build`).
   - @workspace/ui@0.2.10
 
 ## 0.2.9
@@ -91,9 +91,9 @@
 
 ### Patch Changes
 
-- 76e2a5f: Add telemetry opt-out prompt during `elmo init` and new `elmo telemetry status|enable|disable` subcommand. See [Telemetry](https://elmohq.com/docs/developer-guide/telemetry) for what's collected.
+- 76e2a5f: Add telemetry opt-out prompt during `spotlight init` and new `spotlight telemetry status|enable|disable` subcommand. See [Telemetry](https://github.com/metaforismo/spotlightsai/developer-guide/telemetry) for what's collected.
 - edf97d4: Add Mistral as a direct API provider. Set `MISTRAL_API_KEY` and target via `mistral:mistral-api:<model>[:online]`.
-- 7cba46d: License Elmo under the MIT License. Add Code of Conduct, Contributing guide, Security policy, and a lightweight CLA process.
+- 7cba46d: License SpotlightSAI under the MIT License. Add Code of Conduct, Contributing guide, Security policy, and a lightweight CLA process.
 - Updated dependencies [7cba46d]
   - @workspace/ui@0.2.5
 
@@ -120,7 +120,7 @@
 
 ### Patch Changes
 
-- adf7642: CLI `elmo init` now walks through each provider one at a time.
+- adf7642: CLI `spotlight init` now walks through each provider one at a time.
   - @workspace/ui@0.2.1
 
 ## 0.2.0

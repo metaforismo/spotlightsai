@@ -1,5 +1,5 @@
 {
-	"name": "@elmohq/cli",
+	"name": "@metaforismo/spotlightsai-cli",
 	"version": "0.2.19",
 	"license": "MIT",
 	"keywords": [
@@ -20,7 +20,7 @@
 		"ai-visibility"
 	],
 	"bin": {
-		"elmo": "dist/index.js"
+		"spotlight": "dist/index.js"
 	},
 	"files": [
 		"dist",

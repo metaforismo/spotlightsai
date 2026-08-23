@@ -186,7 +186,7 @@
 
 ### Patch Changes
 
-- 1e770ff: Publish multi-arch (`linux/amd64` + `linux/arm64`) Docker images for `elmohq/elmo-web` and `elmohq/elmo-worker`, so Apple Silicon and other arm64 hosts can pull them.
+- 1e770ff: Publish multi-arch (`linux/amd64` + `linux/arm64`) Docker images for `metaforismo/spotlightsai-web` and `metaforismo/spotlightsai-worker`, so Apple Silicon and other arm64 hosts can pull them.
 - 6ab2b42: Fix OG image generation: `og:image` is now an absolute URL and renders the current page's title/description. Adds `og:url`, `og:site_name`, `og:locale`, and `og:logo` to the document head.
   - @workspace/api-spec@0.2.7
   - @workspace/config@0.2.7
@@ -215,7 +215,7 @@
 ### Patch Changes
 
 - edf97d4: Add Mistral as a direct API provider. Set `MISTRAL_API_KEY` and target via `mistral:mistral-api:<model>[:online]`.
-- 7cba46d: License Elmo under the MIT License. Add Code of Conduct, Contributing guide, Security policy, and a lightweight CLA process.
+- 7cba46d: License SpotlightSAI under the MIT License. Add Code of Conduct, Contributing guide, Security policy, and a lightweight CLA process.
 - 839b98b: REST-style brand management API: `GET/POST /api/v1/brands`, `GET/PATCH /api/v1/brands/{brandId}`, `POST /api/v1/tools/analyze`, and full CRUD for `/api/v1/competitors`. API-created brands skip onboarding — callers hit `tools/analyze` first if they want suggestions, then create brands with whatever they choose to keep.
 - 839b98b: Brand onboarding is now a single screen: paste a website and review the suggested products, competitors (with their own domains and aliases), additional brand domains, aliases, and tagged starter prompts before saving. Powered by whichever direct LLM API you've configured (OpenRouter, Anthropic, OpenAI, or Mistral) with web search.
 - Updated dependencies [7990382]

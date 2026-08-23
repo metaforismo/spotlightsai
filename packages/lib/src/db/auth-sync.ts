@@ -24,7 +24,7 @@ type AuthSyncTransaction = Parameters<Parameters<typeof db.transaction>[0]>[0];
  * users never contend.
  */
 async function lockUserMemberships(tx: AuthSyncTransaction, userId: string): Promise<void> {
-	await tx.execute(sql`select pg_advisory_xact_lock(hashtext('elmo-user-memberships'), hashtext(${userId}))`);
+	await tx.execute(sql`select pg_advisory_xact_lock(hashtext('spotlight-user-memberships'), hashtext(${userId}))`);
 }
 
 async function uniqueSlug(baseSlug: string, excludeOrgId: string): Promise<string> {

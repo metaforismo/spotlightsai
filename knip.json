@@ -17,11 +17,6 @@
         "@fontsource/geist-sans"
       ]
     },
-    "apps/www": {
-      "entry": ["src/server.ts", "scripts/**"],
-      "ignore": [".source/**"],
-      "ignoreDependencies": ["shiki"]
-    },
     "apps/worker": {
       "entry": ["scripts/test-provider.ts"]
     },

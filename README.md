@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="apps/www/public/brand/logos/elmo-logo-xl.png" alt="SpotlightSAI" width="300">
+  <img src="apps/www/public/brand/logos/spotlight-logo-xl.png" alt="SpotlightSAI" width="300">
 </p>
 
 <p align="center">
@@ -49,13 +49,13 @@ Requires Docker and an API key from a scraping provider (e.g. BrightData) plus o
 
 ```bash
 # Install the CLI
-npm install -g @elmohq/cli
+npm install -g @metaforismo/spotlightsai-cli
 
 # Initialize configuration (interactive wizard)
-elmo init
+spotlight init
 
 # Start the stack
-elmo compose up -d
+spotlight compose up -d
 ```
 
 Once the services report healthy, open **http://localhost:1515** and create your account.

@@ -3,7 +3,7 @@
  *
  * A local instance is single-user by design: exactly one account is ever
  * created, there is no public signup, no team invitations, and no billing. It
- * ships the full report generator and the stock Elmo branding, and it lets the
+ * ships the full report generator and the stock SpotlightSAI branding, and it lets the
  * operator create as many brands as they like.
  */
 import { expect, test } from "@playwright/test";
@@ -81,21 +81,21 @@ test.describe("Local features", () => {
     await expect(page.getByLabel("Website")).toBeVisible();
   });
 
-  test("stock Elmo branding is used", async ({ page }) => {
+  test("stock SpotlightSAI branding is used", async ({ page }) => {
     await page.goto(`/app/${TEST_BRAND_ID}`);
 
-    // The Elmo wordmark, not a whitelabel icon + name.
-    await expect(page.getByText("elmo", { exact: true }).first()).toBeVisible({ timeout: 30_000 });
+    // The SpotlightSAI wordmark, not a whitelabel icon + name.
+    await expect(page.getByText("spotlight", { exact: true }).first()).toBeVisible({ timeout: 30_000 });
     // Self-hosters get the version and project links a whitelabel build hides.
-    await expect(page.locator('a[href="https://github.com/elmohq/elmo"]')).toBeVisible();
+    await expect(page.locator('a[href="https://github.com/metaforismo/spotlightsai"]')).toBeVisible();
   });
 
-  test("the web manifest carries the Elmo icons", async ({ request }) => {
+  test("the web manifest carries the SpotlightSAI icons", async ({ request }) => {
     const response = await request.get("/api/manifest");
     expect(response.status()).toBe(200);
 
     const manifest = (await response.json()) as { short_name: string; icons: { src: string }[] };
-    expect(manifest.short_name).toBe("Elmo");
-    expect(manifest.icons.some((icon) => icon.src.startsWith("/icons/elmo-icon"))).toBe(true);
+    expect(manifest.short_name).toBe("SpotlightSAI");
+    expect(manifest.icons.some((icon) => icon.src.startsWith("/icons/spotlight-icon"))).toBe(true);
   });
 });

@@ -1,6 +1,6 @@
 ---
 title: Commands Reference
-description: All development scripts and commands for working on Elmo.
+description: All development scripts and commands for working on SpotlightSAI.
 ---
 
 ## Development
@@ -75,7 +75,7 @@ pnpm --filter @workspace/web ladle
 
 ```bash
 # Run CLI directly from source
-pnpm elmo <command>
+pnpm spotlight <command>
 
 # Build and link CLI globally for testing
 pnpm cli:link
@@ -88,20 +88,20 @@ pnpm cli:unlink
 
 ```bash
 # Build Docker images locally
-elmo compose build
+spotlight compose build
 
 # Build without cache
-elmo compose build --no-cache
+spotlight compose build --no-cache
 
 # Build only web or worker
-elmo compose build web
-elmo compose build worker
+spotlight compose build web
+spotlight compose build worker
 
 # Run other docker compose commands
-elmo compose up -d
-elmo compose ps
-elmo compose logs -f web
-elmo compose down
+spotlight compose up -d
+spotlight compose ps
+spotlight compose logs -f web
+spotlight compose down
 ```
 
 ## Versioning

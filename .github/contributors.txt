@@ -1,9 +1,9 @@
 # ─────────────────────────────────────────────────────────────────────
-# Elmo Contributor License Agreement — Signature Registry
+# SpotlightSAI Contributor License Agreement — Signature Registry
 # ─────────────────────────────────────────────────────────────────────
 #
 # Each line below is the GitHub username of a contributor who has signed
-# the Elmo Contributor License Agreement (CLA).
+# the SpotlightSAI Contributor License Agreement (CLA).
 #
 # By opening a pull request that adds your GitHub username to this file,
 # you agree to be bound by the terms of the CLA in respect of all
@@ -11,7 +11,7 @@
 # Software, LLC.
 #
 # Read the CLA before signing:
-#   https://github.com/elmohq/elmo/blob/main/CLA.md
+#   CLA.md
 #
 # Format:
 #   - one GitHub username per line, lowercase, no leading "@"

@@ -8,7 +8,7 @@
  * 1. User logs in via Auth0 SSO -> better-auth creates user + session
  * 2. provisionUser fires (before session cookie is set)
  * 3. Fetches app_metadata from Auth0 Management API
- * 4. Upserts better-auth organizations from elmo_orgs
+ * 4. Upserts better-auth organizations from spotlight_orgs
  * 5. Sets user admin role and report generator access flags
  * 6. Mutates the user object so the session cookie has correct data
  */
@@ -24,28 +24,28 @@ import { ManagementClient } from "auth0";
 import { z } from "zod";
 
 interface Auth0AppMetadata {
-	elmo_orgs: Array<{ id: string; name: string }>;
-	elmo_report_generator_access?: boolean;
-	elmo_admin?: boolean;
+	spotlight_orgs: Array<{ id: string; name: string }>;
+	spotlight_report_generator_access?: boolean;
+	spotlight_admin?: boolean;
 }
 
 let managementClient: ManagementClient | null = null;
 
 const Auth0AppMetadataSchema = z.object({
-	elmo_orgs: z.array(
+	spotlight_orgs: z.array(
 		z.object({
 			id: z.string().min(1),
 			name: z.string().min(1),
 		}),
 	),
-	elmo_report_generator_access: z.boolean().optional(),
-	elmo_admin: z.boolean().optional(),
+	spotlight_report_generator_access: z.boolean().optional(),
+	spotlight_admin: z.boolean().optional(),
 });
 
 const REVOKED_METADATA: Auth0AppMetadata = {
-	elmo_orgs: [],
-	elmo_report_generator_access: false,
-	elmo_admin: false,
+	spotlight_orgs: [],
+	spotlight_report_generator_access: false,
+	spotlight_admin: false,
 };
 
 function getManagementClient(): ManagementClient {
@@ -113,11 +113,11 @@ export async function syncAuth0User(
 	console.log(`[auth0-sync] Syncing user=${userId}`);
 	const metadata = await fetchAuth0AppMetadata(auth0UserId);
 
-	await syncOrganizations(userId, metadata.elmo_orgs);
+	await syncOrganizations(userId, metadata.spotlight_orgs);
 
 	const flags = {
-		role: metadata.elmo_admin ? "admin" : "user",
-		hasReportGeneratorAccess: metadata.elmo_report_generator_access ?? false,
+		role: metadata.spotlight_admin ? "admin" : "user",
+		hasReportGeneratorAccess: metadata.spotlight_report_generator_access ?? false,
 	};
 	await updateUserFlags(userId, flags);
 

@@ -7,4 +7,4 @@
 "@workspace/www": patch
 ---
 
-Adds behind-the-scenes support for Elmo Cloud.
+Adds behind-the-scenes support for SpotlightSAI Cloud.

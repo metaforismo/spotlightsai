@@ -1,15 +1,15 @@
-# Contributing to Elmo
+# Contributing to SpotlightSAI
 
 Thanks for your interest in contributing! For minor fixes, feel free to
 open a PR directly. For anything larger, please open an issue first so
 the maintainers can agree on the approach before you start work.
 
 Setup, commands, architecture, and the contribution workflow live in the
-[Developer Guide](https://www.elmohq.com/docs/developer-guide).
+packages/docs/content/docs/developer-guide.
 
 ## License and Contributor License Agreement
 
-Elmo is licensed under the [MIT License](LICENSE.md). By contributing, you
+SpotlightSAI is licensed under the [MIT License](LICENSE.md). By contributing, you
 agree that your contributions will be licensed under the same terms.
 
 Before your first pull request can be merged, you must sign our
@@ -33,17 +33,17 @@ The CLA check will then pass for this PR and all your future PRs.
 
 By participating in this project you agree to abide by our
 [Code of Conduct](CODE_OF_CONDUCT.md). Report violations to
-[conduct@elmohq.com](mailto:conduct@elmohq.com).
+[francescogiannicola1@gmail.com](mailto:francescogiannicola1@gmail.com).
 
 ## Reporting Security Issues
 
 Please do not open a public issue for security vulnerabilities. Email
-[security@elmohq.com](mailto:security@elmohq.com) instead — see
+[francescogiannicola1@gmail.com](mailto:francescogiannicola1@gmail.com) instead — see
 [`SECURITY.md`](SECURITY.md) for details.
 
 ## Questions?
 
 - [Discord](https://discord.gg/s24nubCtKz) — fastest way to ask questions.
-- [GitHub Issues](https://github.com/elmohq/elmo/issues) — for bug reports
+- [GitHub Issues](https://github.com/metaforismo/spotlightsai/issues) — for bug reports
   and feature requests.
-- [Schedule a call](https://cal.com/jrhizor/elmo) — for anything else.
+- [Schedule a call](https://cal.com/jrhizor/spotlight) — for anything else.

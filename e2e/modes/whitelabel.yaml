@@ -1,6 +1,6 @@
 # Compose override that runs the E2E stack in whitelabel mode.
 #
-# Layered on top of the generated .elmo/elmo.yaml, which supplies the local
+# Layered on top of the generated .spotlight/spotlight.yaml, which supplies the local
 # .env; `environment` wins over `env_file`, so only the whitelabel-specific
 # values live here. Drop this file from COMPOSE_FILE and recreate `web` to go
 # back to local mode.

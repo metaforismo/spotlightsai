@@ -349,7 +349,7 @@ function PremiumApiPool({ premium }: { premium: PremiumPool }) {
 }
 
 /**
- * Self-hosted only: what else Elmo can track, and which provider account each
+ * Self-hosted only: what else SpotlightSAI can track, and which provider account each
  * one needs. The provider status workflow exercises every suggested combination.
  *
  * Scrapers and direct APIs are separate columns because they are not

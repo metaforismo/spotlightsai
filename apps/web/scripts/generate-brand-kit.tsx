@@ -1,17 +1,17 @@
 #!/usr/bin/env tsx
 /**
- * Generates the Elmo brand kit as a zip of PNGs using Satori + resvg (JSX → PNG).
+ * Generates the SpotlightSAI brand kit as a zip of PNGs using Satori + resvg (JSX → PNG).
  *
- * Output: apps/web/elmo-brand-kit.zip
+ * Output: apps/web/spotlight-brand-kit.zip
  *
  *   Icons (square, "e" glyph):
- *     elmo-icon-{size}.png              Transparent background
- *     elmo-icon-white-{size}.png        White background
- *     elmo-icon-dark-{size}.png         Dark background
- *     elmo-icon-maskable-{size}.png     Maskable/PWA (white bg, safe-zone padding)
+ *     spotlight-icon-{size}.png              Transparent background
+ *     spotlight-icon-white-{size}.png        White background
+ *     spotlight-icon-dark-{size}.png         Dark background
+ *     spotlight-icon-maskable-{size}.png     Maskable/PWA (white bg, safe-zone padding)
  *
- *   Logos ("elmo" wordmark, sm/md/lg × 3 backgrounds):
- *     elmo-logo[-white|-dark]-{sm|md|lg}.png
+ *   Logos ("spotlight" wordmark, sm/md/lg × 3 backgrounds):
+ *     spotlight-logo[-white|-dark]-{sm|md|lg}.png
  *
  *   OG images (1200×630):
  *     og-default.png                    Default Open Graph image
@@ -37,7 +37,7 @@ const BRAND_COLOR = "#2563eb";
 const ACCENT_COLORS = ["#2563eb", "#f4d35e", "#ee964b", "#f95738"];
 const TAGLINE = "AI Search Optimization";
 const DESCRIPTION = "Track and optimize your brand's visibility across AI models.";
-const OUTPUT_ZIP = resolve(__dirname, "../elmo-brand-kit.zip");
+const OUTPUT_ZIP = resolve(__dirname, "../spotlight-brand-kit.zip");
 
 // ---------------------------------------------------------------------------
 // Fonts
@@ -115,7 +115,7 @@ function MaskableIcon({ size }: { size: number }) {
 }
 
 // ---------------------------------------------------------------------------
-// Logo — "elmo" wordmark with equal padding on all sides
+// Logo — "spotlight" wordmark with equal padding on all sides
 // ---------------------------------------------------------------------------
 
 function Logo({ bg, fontSize }: { bg?: string; fontSize: number }) {
@@ -129,14 +129,14 @@ function Logo({ bg, fontSize }: { bg?: string; fontSize: number }) {
 					lineHeight: 1,
 				}}
 			>
-				elmo
+				spotlight
 			</div>
 		</div>
 	);
 }
 
 // ---------------------------------------------------------------------------
-// PatternBanner — repeating "elmo" wordmark at an angle, wrapping-paper style.
+// PatternBanner — repeating "spotlight" wordmark at an angle, wrapping-paper style.
 // ---------------------------------------------------------------------------
 
 function PatternBanner({
@@ -185,7 +185,7 @@ function PatternBanner({
 						marginRight: gap,
 					}}
 				>
-					elmo
+					spotlight
 				</div>,
 			);
 		}
@@ -254,7 +254,7 @@ function OgImage({ title }: { title: string }) {
 						marginBottom: 28,
 					}}
 				>
-					elmo
+					spotlight
 				</div>
 				<div
 					style={{
@@ -307,7 +307,7 @@ console.log("Icons:");
 for (const v of iconVariants) {
 	for (const size of iconSizes) {
 		await addFile(
-			`icons/elmo-icon${v.suffix}-${size}.png`,
+			`icons/spotlight-icon${v.suffix}-${size}.png`,
 			render(<Icon fill={BRAND_COLOR} bg={v.bg} size={size} />, size, size),
 		);
 	}
@@ -315,7 +315,7 @@ for (const v of iconVariants) {
 
 console.log("\nIcons — Maskable (PWA):");
 for (const size of [64, 128, 256, 512]) {
-	await addFile(`icons/elmo-icon-maskable-${size}.png`, render(<MaskableIcon size={size} />, size, size));
+	await addFile(`icons/spotlight-icon-maskable-${size}.png`, render(<MaskableIcon size={size} />, size, size));
 }
 
 // Logos — always brand blue text
@@ -335,7 +335,7 @@ const logoSizes = [
 for (const bg of logoBgs) {
 	for (const sz of logoSizes) {
 		await addFile(
-			`logos/elmo-logo${bg.suffix}-${sz.label}.png`,
+			`logos/spotlight-logo${bg.suffix}-${sz.label}.png`,
 			render(<Logo bg={bg.bg} fontSize={sz.fontSize} />, sz.w, sz.h),
 		);
 	}
@@ -388,4 +388,4 @@ await done;
 
 const zipSize = readFileSync(OUTPUT_ZIP).length;
 const kb = (zipSize / 1024).toFixed(1);
-console.log(`\n✅ elmo-brand-kit.zip (${kb} KB, ${files.length} files) → ${OUTPUT_ZIP}`);
+console.log(`\n✅ spotlight-brand-kit.zip (${kb} KB, ${files.length} files) → ${OUTPUT_ZIP}`);

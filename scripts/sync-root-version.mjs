@@ -3,7 +3,7 @@
 /**
  * Sync the monorepo root package version to the release train.
  *
- * The root `elmo` package is not a workspace member, so `changeset version`
+ * The root `spotlight` package is not a workspace member, so `changeset version`
  * never bumps it and it drifts behind the published packages. Every workspace
  * package shares a single version (changesets `fixed: [["**"]]`), so we copy
  * that version onto the root purely as a visual marker of the current release.

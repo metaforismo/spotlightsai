@@ -56,7 +56,7 @@ const localConfig: ClientConfig = {
 		showOptimizeButton: false,
 		canCreateBrands: true,
 	},
-	branding: { name: "Elmo", chartColors: DEFAULT_CHART_COLORS },
+	branding: { name: "SpotlightSAI", chartColors: DEFAULT_CHART_COLORS },
 	analytics: {},
 };
 
@@ -67,7 +67,7 @@ const demoConfig: ClientConfig = {
 		showOptimizeButton: false,
 		canCreateBrands: false,
 	},
-	branding: { name: "Elmo", chartColors: DEFAULT_CHART_COLORS },
+	branding: { name: "SpotlightSAI", chartColors: DEFAULT_CHART_COLORS },
 	analytics: {},
 };
 
@@ -108,7 +108,7 @@ const cloudConfig: ClientConfig = {
 		teamInvites: true,
 		reportGeneration: false,
 	},
-	branding: { name: "Elmo", chartColors: DEFAULT_CHART_COLORS },
+	branding: { name: "SpotlightSAI", chartColors: DEFAULT_CHART_COLORS },
 	analytics: {},
 };
 
@@ -207,7 +207,7 @@ export const Local = () => {
 
 /** Demo — read-only preview, seeded user, no admin */
 export const Demo = () => {
-	const demoUser = authedUser("Demo User", "demo@elmohq.com", "demo");
+	const demoUser = authedUser("Demo User", "demo@spotlights.ai", "demo");
 	demoUser.user.picture = "https://api.dicebear.com/9.x/bottts-neutral/svg?seed=Adrian";
 	const brand = configureMocks(demoConfig, onboardedBrand, demoUser);
 

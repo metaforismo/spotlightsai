@@ -132,10 +132,10 @@ describe("createApiHandler", () => {
 			handle: async ({ body }) => ({ name: body.name }),
 		});
 		const response = await handler({
-			request: makeRequest({ method: "POST", body: JSON.stringify({ name: "  elmo  " }) }),
+			request: makeRequest({ method: "POST", body: JSON.stringify({ name: "  spotlight  " }) }),
 			params: {},
 		});
-		expect(await response.json()).toEqual({ name: "elmo" });
+		expect(await response.json()).toEqual({ name: "spotlight" });
 	});
 
 	it("converts a thrown ApiError into its error response", async () => {

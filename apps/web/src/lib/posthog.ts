@@ -1,6 +1,6 @@
 import posthog from "posthog-js";
 
-const POSTHOG_HOST = "https://var.elmohq.com";
+const POSTHOG_HOST = "https://telemetry.spotlightsai.local";
 
 let initialized = false;
 

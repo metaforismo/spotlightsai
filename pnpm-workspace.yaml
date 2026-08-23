@@ -41,7 +41,7 @@ overrides:
   shell-quote: "^1.8.5"
   ws: "^8.20.1"
   protobufjs: "^7.5.8"
-  # Keep one fumadocs-core copy across apps/www and packages/docs (a peer dep there).
+  # Keep one fumadocs-core copy across the workspace (packages/docs peer dep).
   # Without this anchor, bumping fumadocs-core in www alone leaves @workspace/docs on a
   # stale version and the two PageTree types clash at the docs-page-layout boundary.
   fumadocs-core: "^16.9.1"

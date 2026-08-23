@@ -10,9 +10,9 @@ const E2E_DIR = import.meta.dirname;
 
 // Defaults to localhost so the destructive seeder can never point at a
 // production database. The env override lets CI workflows pass their own
-// credentials (e.g. `elmo`/`elmo` for the scheduling-policy job's postgres
+// credentials (e.g. `spotlight`/`spotlight` for the scheduling-policy job's postgres
 // service) — the first one to set DATABASE_URL in a given step wins.
-export const DATABASE_URL = process.env.DATABASE_URL ?? "postgres://postgres:postgres@localhost:5432/elmo";
+export const DATABASE_URL = process.env.DATABASE_URL ?? "postgres://postgres:postgres@localhost:5432/spotlight";
 
 // Must match ADMIN_API_KEYS in the CI-patched .env (.github/workflows/e2e.yaml)
 // and bruno/environments/local.bru.
@@ -82,10 +82,10 @@ export function authStatePath(mode: DeploymentMode): string {
 }
 
 /**
- * The generated deployment config `elmo init --dev` writes. Read for the
+ * The generated deployment config `spotlight init --dev` writes. Read for the
  * BETTER_AUTH_SECRET the whitelabel setup needs to mint a session cookie.
  */
-export const GENERATED_ENV_PATH = path.join(E2E_DIR, ".elmo", ".env");
+export const GENERATED_ENV_PATH = path.join(E2E_DIR, ".spotlight", ".env");
 
 /**
  * Whitelabel branding, mirroring e2e/modes/whitelabel.yaml. Kept here so specs
@@ -115,6 +115,6 @@ export const CLOUD_SIGNUP = {
 
 /** The shared credentials a demo deployment advertises on its login page. */
 export const DEMO_CREDENTIALS = {
-  email: "demo@elmohq.com",
+  email: "demo@spotlights.ai",
   password: "demo",
 } as const;

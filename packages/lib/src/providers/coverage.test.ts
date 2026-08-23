@@ -1,5 +1,5 @@
 /**
- * Keeps the three lists that describe "what Elmo can track" honest about each
+ * Keeps the three lists that describe "what SpotlightSAI can track" honest about each
  * other: the models we give display metadata to, the provider/model combos the
  * scheduled status workflow exercises, and the providers we actually ship.
  *
@@ -37,7 +37,7 @@ describe("provider coverage", () => {
 				const described = describeProvider(provider);
 				expect(described).not.toBeNull();
 				expect(described?.name).toBeTruthy();
-				expect(described?.docsUrl).toMatch(/^https:\/\/docs\.elmohq\.com\/docs\/user-guide\/providers/);
+				expect(described?.docsUrl).toMatch(/^https:\/\/github\.com\/metaforismo\/spotlightsai/);
 			}
 		}
 	});

@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-description: Get Elmo running on your infrastructure in under 5 minutes using the CLI.
+description: Get SpotlightSAI running on your infrastructure in under 5 minutes using the CLI.
 ---
 
 ## Prerequisites
@@ -13,7 +13,7 @@ description: Get Elmo running on your infrastructure in under 5 minutes using th
 ## Install the CLI
 
 ```bash
-npm install -g @elmohq/cli
+npm install -g @metaforismo/spotlightsai-cli
 ```
 
 ## Initialize Your Instance
@@ -21,29 +21,29 @@ npm install -g @elmohq/cli
 Run the interactive setup wizard:
 
 ```bash
-elmo init
+spotlight init
 ```
 
 The wizard walks you through:
 
-1. **Config directory** — Where to store your `elmo.yaml` and `.env` files (default: `./elmo`)
+1. **Config directory** — Where to store your `spotlight.yaml` and `.env` files (default: `./spotlight`)
 2. **PostgreSQL** — Run Postgres in Docker (recommended) or provide an existing `DATABASE_URL`
-3. **AI Providers** — Configure scrapers ([Cloro](https://cloro.dev?fpr=elmo), [BrightData](https://get.brightdata.com/67h1b7h0shcn), [Oxylabs](https://oxylabs.go2cloud.org/aff_c?offer_id=7&aff_id=2263&url_id=32), [Olostep](https://olostep.com/?ref=elmo), [DataForSEO](https://dataforseo.com/?aff=184966)) and/or direct model APIs (OpenAI, Anthropic, Mistral, OpenRouter); see [Providers](/docs/user-guide/providers) for details
+3. **AI Providers** — Configure scrapers ([Cloro](https://cloro.dev?fpr=spotlight), [BrightData](https://get.brightdata.com/67h1b7h0shcn), [Oxylabs](https://oxylabs.go2cloud.org/aff_c?offer_id=7&aff_id=2263&url_id=32), [Olostep](https://olostep.com/?ref=spotlight), [DataForSEO](https://dataforseo.com/?aff=184966)) and/or direct model APIs (OpenAI, Anthropic, Mistral, OpenRouter); see [Providers](/docs/user-guide/providers) for details
 4. **Start** — Optionally start the stack immediately
 
-Once complete, Elmo generates two files in your config directory:
+Once complete, SpotlightSAI generates two files in your config directory:
 
 | File | Purpose |
 |------|---------|
-| `elmo.yaml` | Docker Compose configuration for all services |
+| `spotlight.yaml` | Docker Compose configuration for all services |
 | `.env` | Environment variables, secrets, and API keys |
 
-## Start Elmo
+## Start SpotlightSAI
 
 If you didn't start during init, bring everything up with:
 
 ```bash
-elmo compose up -d
+spotlight compose up -d
 ```
 
 This pulls the Docker images and starts all services. Once they report healthy, open **http://localhost:1515** in your browser.
@@ -52,7 +52,7 @@ This pulls the Docker images and starts all services. Once they report healthy, 
 
 <img
   src="/brand/architecture.svg"
-  alt="Elmo system architecture: User connects to Web; Web and Worker share a Postgres database; Web calls LLM APIs; Worker calls both LLM APIs and an LLM Scraper."
+  alt="SpotlightSAI system architecture: User connects to Web; Web and Worker share a Postgres database; Web calls LLM APIs; Worker calls both LLM APIs and an LLM Scraper."
   className="my-6 w-full"
 />
 
@@ -62,27 +62,27 @@ This pulls the Docker images and starts all services. Once they report healthy, 
 | **Worker** | Background scheduler that drives prompt runs |
 | **Postgres** | Shared database and job queue |
 | **LLM APIs** | Direct API calls (OpenAI, Anthropic, OpenRouter) |
-| **LLM Scraper** | Scrapers for ChatGPT, Google AI Mode, and other live AI surfaces ([Cloro](https://cloro.dev?fpr=elmo), [BrightData](https://get.brightdata.com/67h1b7h0shcn), [Oxylabs](https://oxylabs.go2cloud.org/aff_c?offer_id=7&aff_id=2263&url_id=32), [Olostep](https://olostep.com/?ref=elmo), [DataForSEO](https://dataforseo.com/?aff=184966)) |
-| **Elmo CLI** | Generates `elmo.yaml` + `.env` and runs `docker compose` |
+| **LLM Scraper** | Scrapers for ChatGPT, Google AI Mode, and other live AI surfaces ([Cloro](https://cloro.dev?fpr=spotlight), [BrightData](https://get.brightdata.com/67h1b7h0shcn), [Oxylabs](https://oxylabs.go2cloud.org/aff_c?offer_id=7&aff_id=2263&url_id=32), [Olostep](https://olostep.com/?ref=spotlight), [DataForSEO](https://dataforseo.com/?aff=184966)) |
+| **SpotlightSAI CLI** | Generates `spotlight.yaml` + `.env` and runs `docker compose` |
 
 ## CLI Commands Reference
 
-Once Elmo is running, these commands help you manage it:
+Once SpotlightSAI is running, these commands help you manage it:
 
 ```bash
 # View live logs
-elmo compose logs -f
+spotlight compose logs -f
 
 # View logs for a specific service
-elmo compose logs -f web
+spotlight compose logs -f web
 
 # Check service status
-elmo compose ps
+spotlight compose ps
 
 # Stop all services
-elmo compose down
+spotlight compose down
 ```
 
 ## What's Next
 
-With Elmo running, head to the [User Guide](/docs/user-guide) to create your first brand, configure prompts, and start tracking AI visibility.
+With SpotlightSAI running, head to the [User Guide](/docs/user-guide) to create your first brand, configure prompts, and start tracking AI visibility.
